@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; }
+        .progress { height: 30px; background-color: #161b22; border: 1px solid #30363d; border-radius: 15px; }
+        .progress-bar { font-weight: bold; line-height: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container py-5 text-center">
+        <h1 class="text-success mb-5">Analyse Descriptive Del_cybercheck</h1>
+        
+        <div class="row text-start justify-content-center">
+            <div class="col-md-8">
+                <p class="mb-1">Taux d'adoption 2FA</p>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success" style="width: {{ pct_2fa }}%">{{ pct_2fa }}%</div>
+                </div>
+
+                <p class="mb-1">Utilisation de Gestionnaires de MDP</p>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-info" style="width: {{ pct_mdp }}%">{{ pct_mdp }}%</div>
+                </div>
+
+                <div class="card bg-dark p-3 mt-4 border-secondary">
+                    <h5>Résumé de la collecte :</h5>
+                    <p>Total d'audits réalisés : <strong>{{ total }}</strong></p>
+                </div>
+
+                <a href="/" class="btn btn-outline-success mt-4">Nouveau formulaire</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
