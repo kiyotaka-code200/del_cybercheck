@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import AuditForm 
-from .models import AuditData  
+from .models import CyberRecord 
 
 def home(request):
     if request.method == "POST":
         form = AuditForm(request.POST)
         if form.is_valid():
-            # --- SAUVEGARDE DANS LA BASE DE DONNÉES ---
-            AuditData.objects.create(
+            # SAUVEGARDE RÉELLE
+            CyberRecord.objects.create(
                 nom_utilisateur=form.cleaned_data['nom_utilisateur'],
                 nationalite=form.cleaned_data['nationalite'],
                 genre=form.cleaned_data['genre'],
@@ -22,12 +22,12 @@ def home(request):
     return render(request, 'audit/home.html', {'form': form})
 
 def resultats(request):
-    # --- CALCUL DES VRAIES STATISTIQUES ---
-    total = AuditData.objects.count() 
+    total = CyberRecord.objects.count() 
     
     if total > 0:
-        count_2fa = AuditData.objects.filter(use_2fa=True).count()
-        count_mdp = AuditData.objects.filter(has_phone_password=True).count()
+        
+        count_2fa = CyberRecord.objects.filter(use_2fa=True).count()
+        count_mdp = CyberRecord.objects.filter(has_phone_password=True).count()
         
         pct_2fa = (count_2fa / total) * 100
         pct_mdp = (count_mdp / total) * 100
