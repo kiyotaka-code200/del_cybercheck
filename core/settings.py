@@ -1,3 +1,5 @@
+import os # Assure-toi que l'import est en haut du fichier
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 """
 Django settings for core project.
 
@@ -107,3 +109,4 @@ STATIC_URL = 'static/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
