@@ -1,4 +1,3 @@
-
 from django.db import models
 
 class CyberRecord(models.Model):
@@ -14,17 +13,16 @@ class CyberRecord(models.Model):
         ('android', 'Android/iOS'),
     ]
 
-    # Champs d'identité
+
     nom = models.CharField(max_length=100)
     age = models.PositiveIntegerField()
     ville = models.CharField(max_length=100)
     nationalite = models.CharField(max_length=100)
     
-    # Champs avec listes déroulantes
+
     niveau_etudes = models.CharField(max_length=5, choices=CHOIX_NIVEAU)
     os_principal = models.CharField(max_length=10, choices=CHOIX_OS)
     
-    # Pratiques Cyber (Booléens)
     utilise_2fa = models.BooleanField(default=False, verbose_name="Double Authentification")
     gestionnaire_mdp = models.BooleanField(default=False, verbose_name="Gestionnaire de MDP")
     maj_auto = models.BooleanField(default=False, verbose_name="Mises à jour automatiques")
