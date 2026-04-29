@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import AuditForm # On va créer ce fichier juste après
+from .forms import AuditForm 
 
 def home(request):
     if request.method == "POST":
         form = AuditForm(request.POST)
         if form.is_valid():
-            # Ici, on simule l'enregistrement (on verra la DB plus tard)
-            # On passe les données à la page résultats via la session ou directement
             return redirect('resultats')
     else:
         form = AuditForm()
